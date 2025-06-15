@@ -17,11 +17,11 @@ const ContactSection = () => {
         <div className="flex justify-center space-x-8 mb-8">
           <div className="flex items-center space-x-2">
             <Mail className="w-5 h-5 text-primary" />
-            <span>oz@ejemplo.com</span>
+            <span>angelusignis777@gmail.com</span>
           </div>
           <div className="flex items-center space-x-2">
             <Phone className="w-5 h-5 text-primary" />
-            <span>+1 234 567 8900</span>
+            <span>+57 3228352645</span>
           </div>
         </div>
         <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">

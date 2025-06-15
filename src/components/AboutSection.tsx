@@ -22,7 +22,7 @@ const AboutSection = () => {
             </p>
             <div className="flex items-center space-x-2 mb-4">
               <MapPin className="w-5 h-5 text-primary" />
-              <span>Ciudad, País</span>
+              <span>Bogota, Colombia</span>
             </div>
             <div className="flex items-center space-x-2">
               <Calendar className="w-5 h-5 text-primary" />
@@ -44,3 +44,14 @@ const AboutSection = () => {
 };
 
 export default AboutSection;
+// This AboutSection component provides a brief introduction to the developer, highlighting their skills, interests, and location.
+// It features a two-column layout with text on one side and an image on the other, creating a balanced and visually appealing design.
+// The use of Lucide icons adds a modern touch, while the gradient background enhances the overall aesthetic.
+// The section is responsive, ensuring it looks great on both desktop and mobile devices.
+// The component is designed to be easily customizable, allowing for quick updates to text and images as needed.
+// The use of Tailwind CSS classes provides a flexible and efficient way to style the component, ensuring it maintains a clean and consistent design across all devices.  
+// The section is structured to engage visitors, providing them with a personal insight into the developer's background and interests.
+// The AboutSection is a key part of the portfolio, giving potential clients or employers a glimpse into the developer's personality and professional ethos.
+// It complements the HeroSection by providing more detailed information about the developer, enhancing the overall narrative of the portfolio.
+
+
