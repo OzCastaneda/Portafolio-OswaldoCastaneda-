@@ -114,7 +114,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-20 animate-pulse"></div>
               <img 
-                src="/assets/profilephoto.png"
+                src="/public/assets/profilephoto.jpeg" // ✅ Asegúrate de que la ruta sea correcta
                 alt="Oz - Desarrollador Full Stack"
                 className="relative w-80 h-80 object-cover rounded-full border-4 border-primary/30 shadow-2xl"
               />
