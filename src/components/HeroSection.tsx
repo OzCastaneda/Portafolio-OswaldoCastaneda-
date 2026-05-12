@@ -1,46 +1,32 @@
-import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download, MessageCircle } from "lucide-react";
 
+const socialLinks = {
+  github: "https://github.com/OzCastaneda",
+  linkedin: "https://www.linkedin.com/in/oswaldo-castañeda-jobprofile1",
+  email: "angelusignis777@gmail.com",
+  whatsapp: "+573228352645",
+};
+
 const HeroSection = () => {
-  // Configuración de enlaces sociales
-  const socialLinks = {
-    github: "https://github.com/OzCastaneda", 
-    linkedin: "https://www.linkedin.com/in/oswaldo-castañeda-jobprofile1", // ✅ Corregido: agregado https://
-    email: "angelusignis777@gmail.com",
-    whatsapp: "+573228352645"
+  const handleSocialClick = (platform: keyof typeof socialLinks) => {
+    const urlMap = {
+      github: socialLinks.github,
+      linkedin: socialLinks.linkedin,
+      email: `mailto:${socialLinks.email}`,
+      whatsapp: `https://wa.me/${socialLinks.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
+        "¡Hola! Me interesa contactarte para hablar sobre oportunidades laborales."
+      )}`,
+    };
+
+    window.open(urlMap[platform], "_blank", "noopener,noreferrer");
   };
 
-  // Función para abrir enlaces sociales
-  const handleSocialClick = (platform) => {
-    switch (platform) {
-      case 'github':
-        window.open(socialLinks.github, '_blank');
-        break;
-      case 'linkedin':
-        window.open(socialLinks.linkedin, '_blank');
-        break;
-      case 'email':
-        window.open(`mailto:${socialLinks.email}`, '_blank');
-        break;
-      case 'whatsapp': {
-        const message = encodeURIComponent("¡Hola! Me interesa contactarte para hablar sobre oportunidades laborales.");
-        window.open(`https://wa.me/${socialLinks.whatsapp.replace(/\D/g, '')}?text=${message}`, '_blank');
-        break;
-      }
-      default:
-        break;
-    }
-  };
-
-  // ✅ Función simplificada para descargar CV
   const handleDownloadCV = () => {
-    // Aquí puedes poner la ruta de tu CV real
-    const cvUrl = "/assets/CV_Oswaldo_Castaneda.pdf"; // Cambia esta ruta por la de tu CV
-    
-    const link = document.createElement('a');
+    const cvUrl = "/assets/CV_Oswaldo_Castaneda.pdf";
+    const link = document.createElement("a");
     link.href = cvUrl;
-    link.download = 'CV_Oswaldo_Castaneda.pdf';
+    link.download = "CV_Oswaldo_Castaneda.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -51,22 +37,22 @@ const HeroSection = () => {
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-left">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-orbitron">
+            <p className="mb-4 text-sm uppercase tracking-[0.35em] text-primary">Desarrollo web moderno</p>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-orbitron leading-tight">
               Hola, soy <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Oswaldo Castañeda</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              Desarrollador Full Stack apasionado por crear soluciones innovadoras que transforman ideas en realidad digital
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl leading-relaxed">
+              Desarrollador Full Stack que crea experiencias digitales limpias, rápidas y accesibles con React, TypeScript y diseño centrado en el usuario.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity">
-                Ver Proyectos
+              <Button size="lg" className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity" asChild>
+                <a href="#proyectos">Ver Proyectos</a>
               </Button>
-              
-              {/* ✅ Botón simplificado solo para descargar */}
-              <Button 
-                variant="outline" 
-                size="lg" 
+
+              <Button
+                variant="outline"
+                size="lg"
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 onClick={handleDownloadCV}
               >
@@ -74,49 +60,38 @@ const HeroSection = () => {
                 Descargar CV
               </Button>
             </div>
-            
-            <div className="flex space-x-6">
-              <div 
-                onClick={() => handleSocialClick('github')}
-                className="group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                title="GitHub"
-              >
-                <Github className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
-              </div>
-              
-              <div 
-                onClick={() => handleSocialClick('linkedin')}
-                className="group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                title="LinkedIn"
-              >
-                <Linkedin className="w-6 h-6 text-muted-foreground group-hover:text-blue-600 transition-colors" />
-              </div>
-              
-              <div 
-                onClick={() => handleSocialClick('email')}
-                className="group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                title="Email"
-              >
-                <Mail className="w-6 h-6 text-muted-foreground group-hover:text-red-500 transition-colors" />
-              </div>
-              
-              <div 
-                onClick={() => handleSocialClick('whatsapp')}
-                className="group cursor-pointer transform hover:scale-110 transition-all duration-300"
-                title="WhatsApp"
-              >
-                <MessageCircle className="w-6 h-6 text-muted-foreground group-hover:text-green-500 transition-colors" />
-              </div>
+
+            <div className="flex flex-wrap gap-4">
+              {(
+                [
+                  { label: "GitHub", icon: Github, action: () => handleSocialClick("github"), color: "text-primary" },
+                  { label: "LinkedIn", icon: Linkedin, action: () => handleSocialClick("linkedin"), color: "text-blue-500" },
+                  { label: "Email", icon: Mail, action: () => handleSocialClick("email"), color: "text-red-500" },
+                  { label: "WhatsApp", icon: MessageCircle, action: () => handleSocialClick("whatsapp"), color: "text-emerald-500" },
+                ] as const
+              ).map(({ label, icon: Icon, action, color }) => (
+                <button
+                  key={label}
+                  type="button"
+                  onClick={action}
+                  aria-label={label}
+                  className="group flex h-12 w-12 items-center justify-center rounded-2xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-primary"
+                >
+                  <Icon className={`w-5 h-5 ${color} transition-colors group-hover:text-primary`} />
+                </button>
+              ))}
             </div>
           </div>
-          
+
           <div className="flex justify-center lg:justify-end">
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-20 animate-pulse"></div>
-              <img 
+            <div className="relative w-full max-w-sm">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent blur-3xl opacity-20 animate-pulse" />
+              <img
                 src="/assets/profilephoto.jpeg"
-                alt="Oz - Desarrollador Full Stack"
-                className="relative w-80 h-80 object-cover rounded-full border-4 border-primary/30 shadow-2xl"
+                alt="Oswaldo Castañeda"
+                loading="lazy"
+                decoding="async"
+                className="relative mx-auto h-80 w-80 rounded-full border-4 border-primary/30 object-cover shadow-2xl"
               />
             </div>
           </div>
@@ -127,11 +102,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-// This HeroSection component is designed to be a visually appealing introduction to a personal portfolio.
-// It features a bold headline, a brief description, call-to-action buttons, and social media icons.  
-// The layout is responsive, adapting to different screen sizes with a two-column grid on larger screens.
-// The background gradient and image effects add a modern touch, while the use of utility classes ensures a clean and consistent design.  
-// The component is structured to be easily customizable, allowing for quick updates to text, images, and styles as needed.
-// The use of Tailwind CSS classes provides a flexible and efficient way to style the component, ensuring it looks great across all devices.  
 
 

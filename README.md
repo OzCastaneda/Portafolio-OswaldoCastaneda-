@@ -66,9 +66,8 @@ Portafolio web personal desarrollado con React y tecnologías modernas, diseñad
 Oz-NewPortafolio/
 ├── public/
 │   ├── assets/
-│   │   ├── profilephoto.png      # Foto de perfil
-│   │   ├── favicon.ico           # Favicon del sitio
-│   │   ├── placeholder.svg       # Placeholders
+│   │   ├── profilephoto.jpeg    # Foto de perfil (optimizada)
+│   │   ├── placeholder.svg      # Placeholders
 │   │   └── robots.txt           # SEO robots
 ├── src/
 │   ├── components/
@@ -93,7 +92,7 @@ Oz-NewPortafolio/
 │   └── main.tsx               # Punto de entrada
 ├── .gitignore                  # Archivos ignorados por Git
 ├── package.json               # Dependencias y scripts
-├── tailwind.config.js         # Configuración de Tailwind
+├── tailwind.config.ts         # Configuración de Tailwind
 ├── tsconfig.json             # Configuración de TypeScript
 ├── vite.config.ts            # Configuración de Vite
 └── README.md                 # Este archivo
@@ -103,8 +102,7 @@ Oz-NewPortafolio/
 
 ### Prerrequisitos
 
-- Node.js (v18 o superior)
-- npm o yarn
+- Node.js (v18 o superior) o Bun
 - Git
 
 ### Pasos de instalación
@@ -112,7 +110,6 @@ Oz-NewPortafolio/
 1. **Clonar el repositorio**
 
    ```bash
-
    git clone https://github.com/OzCastaneda/Oz-NewPortafolio.git
    cd Oz-NewPortafolio
    ```
@@ -120,29 +117,26 @@ Oz-NewPortafolio/
 2. **Instalar dependencias**
 
    ```bash
+   # Con Bun (recomendado)
+   bun install
+   
+   # O con npm
    npm install
-   # o
-   yarn install
    ```
 
-3. **Configurar variables de entorno** (opcional)
+3. **Ejecutar en modo desarrollo**
 
    ```bash
-   cp .env.example .env.local
-   # Editar .env.local con tus configuraciones
-   ```
-
-4. **Ejecutar en modo desarrollo**
-
-   ```bash
+   # Con Bun
+   bun run dev
+   
+   # O con npm
    npm run dev
-   # o
-   yarn dev
    ```
 
-5. **Abrir en el navegador**
+4. **Abrir en el navegador**
 
-   ```bash
+   ```
    http://localhost:5173
    ```
 
@@ -152,11 +146,16 @@ Oz-NewPortafolio/
 
 ```bash
 # Desarrollo
-npm run dev          # Inicia servidor de desarrollo
-npm run build        # Construye para producción
-npm run preview      # Vista previa de build de producción
-npm run lint         # Ejecuta ESLint
-npm run type-check   # Verifica tipos de TypeScript
+bun run dev          # Inicia servidor de desarrollo
+bun run build        # Construye para producción
+bun run preview      # Vista previa de build de producción
+bun run lint         # Ejecuta ESLint
+
+# Con npm
+npm run dev
+npm run build
+npm run preview
+npm run lint
 ```
 
 ### Personalización
@@ -227,6 +226,41 @@ npm run type-check   # Verifica tipos de TypeScript
 - Input: Campos de formulario
 - Card: Tarjetas de contenido
 - Badge: Etiquetas y tags
+
+## 🌐 Deployment
+
+### Vercel (Recomendado)
+
+1. **Conectar repositorio a Vercel**
+   - Ir a [vercel.com](https://vercel.com)
+   - Conectar repositorio de GitHub
+   - Vercel detectará automáticamente que es un proyecto Vite
+
+2. **Deployment automático**
+   - Se despliega automáticamente en cada push a `main`
+   - Variables de entorno se configuran en settings de Vercel
+
+3. **URL del sitio**
+   ```
+   https://tu-proyecto.vercel.app
+   ```
+
+### Build para producción
+
+```bash
+# Crear build optimizado
+bun run build
+
+# Vista previa del build
+bun run preview
+```
+
+## 📋 Cambios Recientes
+
+- ✅ Optimización de assets (profilephoto.jpeg)
+- ✅ Configuración de Git safety para repositorio
+- ✅ Actualización de dependencias
+- ✅ Mejora en HeroSection
 
 ## 🤝 Contribuir
 

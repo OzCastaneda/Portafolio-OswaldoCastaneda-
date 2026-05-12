@@ -5,84 +5,89 @@
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   :root {
-    --background: 28 25% 5%;
-    --foreground: 28 10% 95%;
+    --background: 228 24% 10%;
+    --foreground: 228 12% 96%;
 
-    --card: 28 20% 8%;
-    --card-foreground: 28 10% 95%;
+    --card: 228 22% 12%;
+    --card-foreground: 228 11% 96%;
 
-    --popover: 28 20% 8%;
-    --popover-foreground: 28 10% 95%;
+    --popover: 228 22% 12%;
+    --popover-foreground: 228 11% 96%;
 
-    --primary: 25 90% 65%;
-    --primary-foreground: 28 25% 5%;
+    --primary: 204 90% 62%;
+    --primary-foreground: 228 12% 8%;
 
-    --secondary: 28 15% 15%;
-    --secondary-foreground: 28 10% 90%;
+    --secondary: 228 18% 16%;
+    --secondary-foreground: 228 10% 92%;
 
-    --muted: 28 15% 12%;
-    --muted-foreground: 28 5% 60%;
+    --muted: 228 18% 16%;
+    --muted-foreground: 228 10% 70%;
 
-    --accent: 25 80% 55%;
-    --accent-foreground: 28 25% 5%;
+    --accent: 338 85% 62%;
+    --accent-foreground: 228 12% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 28 15% 18%;
-    --input: 28 15% 18%;
-    --ring: 25 90% 65%;
+    --border: 228 18% 18%;
+    --input: 228 18% 16%;
+    --ring: 204 90% 62%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 28 20% 8%;
-    --sidebar-foreground: 28 10% 90%;
-    --sidebar-primary: 25 90% 65%;
-    --sidebar-primary-foreground: 28 25% 5%;
-    --sidebar-accent: 28 15% 15%;
-    --sidebar-accent-foreground: 28 10% 90%;
-    --sidebar-border: 28 15% 18%;
-    --sidebar-ring: 25 90% 65%;
+    --sidebar-background: 228 22% 12%;
+    --sidebar-foreground: 228 10% 92%;
+    --sidebar-primary: 204 90% 62%;
+    --sidebar-primary-foreground: 228 12% 8%;
+    --sidebar-accent: 228 18% 16%;
+    --sidebar-accent-foreground: 228 10% 92%;
+    --sidebar-border: 228 18% 18%;
+    --sidebar-ring: 204 90% 62%;
   }
 
   .dark {
-    --background: 28 25% 5%;
-    --foreground: 28 10% 95%;
+    --background: 228 24% 10%;
+    --foreground: 228 12% 96%;
 
-    --card: 28 20% 8%;
-    --card-foreground: 28 10% 95%;
+    --card: 228 22% 12%;
+    --card-foreground: 228 11% 96%;
 
-    --popover: 28 20% 8%;
-    --popover-foreground: 28 10% 95%;
+    --popover: 228 22% 12%;
+    --popover-foreground: 228 11% 96%;
 
-    --primary: 25 90% 65%;
-    --primary-foreground: 28 25% 5%;
+    --primary: 204 90% 62%;
+    --primary-foreground: 228 12% 8%;
 
-    --secondary: 28 15% 15%;
-    --secondary-foreground: 28 10% 90%;
+    --secondary: 228 18% 16%;
+    --secondary-foreground: 228 10% 92%;
 
-    --muted: 28 15% 12%;
-    --muted-foreground: 28 5% 60%;
+    --muted: 228 18% 16%;
+    --muted-foreground: 228 10% 70%;
 
-    --accent: 25 80% 55%;
-    --accent-foreground: 28 25% 5%;
+    --accent: 338 85% 62%;
+    --accent-foreground: 228 12% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 28 15% 18%;
-    --input: 28 15% 18%;
-    --ring: 25 90% 65%;
-    --sidebar-background: 28 20% 8%;
-    --sidebar-foreground: 28 10% 90%;
-    --sidebar-primary: 25 90% 65%;
-    --sidebar-primary-foreground: 28 25% 5%;
-    --sidebar-accent: 28 15% 15%;
-    --sidebar-accent-foreground: 28 10% 90%;
-    --sidebar-border: 28 15% 18%;
-    --sidebar-ring: 25 90% 65%;
+    --border: 228 18% 18%;
+    --input: 228 18% 16%;
+    --ring: 204 90% 62%;
+
+    --sidebar-background: 228 22% 12%;
+    --sidebar-foreground: 228 10% 92%;
+    --sidebar-primary: 204 90% 62%;
+    --sidebar-primary-foreground: 228 12% 8%;
+    --sidebar-accent: 228 18% 16%;
+    --sidebar-accent-foreground: 228 10% 92%;
+    --sidebar-border: 228 18% 18%;
+    --sidebar-ring: 204 90% 62%;
   }
 }
 
@@ -91,9 +96,34 @@
     border-color: hsl(var(--border));
   }
 
+  html {
+    min-height: 100%;
+  }
+
   body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: radial-gradient(circle at top left, rgba(56, 189, 248, 0.1), transparent 18%),
+      radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.1), transparent 24%);
+  }
+
+  a,
+  button {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--primary-foreground));
   }
 }
